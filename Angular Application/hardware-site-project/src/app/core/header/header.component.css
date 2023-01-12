@@ -1,8 +1,11 @@
 .header {
   background-color: #12afda;
-  height: 100px;
   display: flex;
   flex-direction: row;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
 
   justify-content: space-between;
 }
@@ -37,21 +40,92 @@
 }
 
 .middle-side {
-  margin-right: 260px;
+  margin-right: 100px;
+  margin-left: 100px;
   align-items: center;
 }
 
 .logo-img {
-  width: 100px;
-  height: 100px;
+  width: 90px;
+  height: 90px;
 }
 
 .right-side {
   padding-top: 15px;
-  padding-right: 40px;
+  padding-right: 150px;
 }
 
 .shopping-cart-img {
   width: 50px;
   height: 50px;
+}
+
+.navigation-bar {
+  background-color: #0e85a6;
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 90px;
+}
+
+.left-section {
+  display: flex;
+  padding-left: 150px;
+  align-items: center;
+}
+
+.login,
+.register {
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.login:hover,
+.register:hover {
+  background-color: black;
+  cursor: pointer;
+}
+
+
+.middle-section {
+  display: flex;
+  align-items: center;
+}
+
+.periphery {
+  color: white;
+  font-family: Arial;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  cursor: pointer;
+}
+
+.periphery:hover {
+  background-color: black;
+}
+
+.right-section {
+  display: flex;
+  padding-right: 150px;
+  align-items: center;
+}
+
+.phone-img {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}
+
+.phone-number{
+    font-family: Arial;
+    color: white;
+    font-weight: bold;
 }
