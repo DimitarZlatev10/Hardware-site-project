@@ -40,9 +40,8 @@
 }
 
 .middle-side {
-  margin-right: 100px;
-  margin-left: 100px;
   align-items: center;
+  justify-content: center;
 }
 
 .logo-img {
@@ -88,7 +87,7 @@
 
 .login:hover,
 .register:hover {
-  background-color: black;
+  background-color: #074253;
   cursor: pointer;
 }
 
@@ -109,7 +108,7 @@
 }
 
 .periphery:hover {
-  background-color: black;
+  background-color: #074253;
 }
 
 .right-section {
