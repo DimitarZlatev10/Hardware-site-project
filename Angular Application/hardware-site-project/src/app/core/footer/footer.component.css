@@ -1,0 +1,47 @@
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  bottom: 0;
+  margin-bottom: 0;
+  background-color: #085064;
+}
+.footer-text {
+  color: white;
+  font-family: Arial;
+}
+
+/* .footer-info {
+  background-color: #12afda;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.free-shipping {
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+  transition: background-color 0.4s;
+}
+.free-shipping:hover {
+  background-color: blue;
+}
+
+.free-shipping-img {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+}
+
+.free-shipping-text {
+  width: 140px;
+  font-family: Arial;
+  color: white;
+  font-weight: bold;
+}
+.left-side {
+  padding-left: 150px;
+  padding-top: 10px;
+} */

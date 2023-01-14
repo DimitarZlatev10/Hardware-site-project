@@ -2,10 +2,10 @@
   background-color: #12afda;
   display: flex;
   flex-direction: row;
-  position: fixed;
+  /* position: fixed;
   top: 0;
   left: 0;
-  right: 0;
+  right: 0; */
 
   justify-content: space-between;
 }
@@ -63,10 +63,10 @@
   background-color: #0e85a6;
   display: flex;
   justify-content: space-between;
-  position: fixed;
+  position: sticky;
   left: 0;
   right: 0;
-  top: 90px;
+  top: 0;
 }
 
 .left-section {
