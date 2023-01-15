@@ -1,0 +1,124 @@
+.new-items-text {
+  display: inline-block;
+  align-items: center;
+  justify-content: center;
+  padding-top: 20px;
+  font-family: Arial;
+  font-size: 30px;
+  color: #09bed2;
+}
+
+.new-items-container {
+  padding-left: 250px;
+  padding-right: 150px;
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  column-gap: 10px;
+  row-gap: 40px;
+}
+
+.new-item-row {
+  border: 1px solid #ebebeb;
+  transition: box-shadow 0.4s;
+  overflow: hidden;
+}
+
+.new-item-row:hover {
+  box-shadow: 0px 0px 6px 2px rgba(0, 0, 0, 0.75);
+}
+
+.item-image {
+  width: 100%;
+  height: 250px;
+  padding-top: 10px;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-bottom: 10px;
+  cursor: pointer;
+}
+
+.item-title {
+  padding-top: 5px;
+  padding-left: 15px;
+  font-family: Arial;
+  font-weight: bold;
+  padding-bottom: 15px;
+  cursor: pointer;
+}
+
+.item-details-container {
+  padding-left: 20px;
+  padding-bottom: 50px;
+  font-family: Arial;
+  font-size: 14px;
+}
+
+.item-span {
+  color: grey;
+}
+
+.item-price-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 5px;
+}
+
+.item-price {
+  font-family: Arial;
+  font-size: 20px;
+  color: #15b5dd;
+  font-weight: bold;
+}
+
+.btn-img {
+  background-color: #b2b2b2;
+  margin-left: 10px;
+  border-radius: 5px;
+  padding-left: 3px;
+  padding-right: 3px;
+  cursor: pointer;
+}
+
+.btn-img:hover {
+  background-color: #15b5dd;
+}
+
+.view-all-items-container {
+  margin-top: 20px;
+  margin-bottom: 40px;
+  text-align: right;
+  padding-right: 148px;
+}
+
+.view-all-items-button {
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-size: 20px;
+  font-family: Arial;
+  border: 1px solid #09aca2;
+  border-radius: 5px;
+  color: #09aca2;
+  background-color: white;
+  cursor: pointer;
+  margin-bottom: 40px;
+}
+
+.view-all-items-button:hover {
+  background-color: #09aca2;
+  color: white;
+}
+
+/* .float-right ::ng-deep .ngx-pagination .pagination-previous {
+  background: red;
+  cursor: pointer;
+}
+
+.float-right ::ng-deep .ngx-pagination .pagination-previous:hover {
+  background: blue;
+} */

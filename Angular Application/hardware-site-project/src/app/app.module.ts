@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { AuthModule } from './auth/auth.module';
 import { CoreModule } from './core/core.module';
 import { ProductsModule } from './products/products.module';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [AppComponent],
@@ -19,6 +20,7 @@ import { ProductsModule } from './products/products.module';
     AuthModule,
     HttpClientModule,
     ProductsModule,
+    NgxPaginationModule,
   ],
 })
 export class AppModule {}

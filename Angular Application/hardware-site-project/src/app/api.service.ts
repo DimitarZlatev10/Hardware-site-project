@@ -20,4 +20,8 @@ export class ApiService {
   login(userData: any) {
     return this.http.post(`${apiUrl}/users/login`, userData);
   }
+
+  getAllProducts() {
+    return this.http.get(`${apiUrl}/products`);
+  }
 }
