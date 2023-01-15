@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ApiService } from 'src/app/api.service';
+import { LocalService } from 'src/app/local.service';
 
 @Component({
   selector: 'app-register',
@@ -13,7 +15,11 @@ export class RegisterComponent implements OnInit {
   password = '';
   repass = '';
 
-  constructor(private api: ApiService) {}
+  constructor(
+    private api: ApiService,
+    private localStorage: LocalService,
+    private router: Router
+  ) {}
 
   registerUser() {
     console.log(this.firstName, this.lastName);
@@ -25,8 +31,12 @@ export class RegisterComponent implements OnInit {
         password: this.password,
       })
       .subscribe({
-        next(value) {
-          console.log(value);
+        next: (value) => {
+          this.localStorage.saveData('token', this.email);
+          this.router.navigate(['/']);
+        },
+        error: (err) => {
+          console.error(err);
         },
       });
   }
