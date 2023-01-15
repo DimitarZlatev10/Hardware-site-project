@@ -1,17 +1,13 @@
 .header {
   background-color: #12afda;
+
   display: flex;
   flex-direction: row;
-  /* position: fixed;
-  top: 0;
-  left: 0;
-  right: 0; */
-
   justify-content: space-between;
 }
 
 .left-side {
-  padding-left: 150px;
+  padding-left: 100px;
   padding-top: 10px;
 }
 
@@ -23,7 +19,7 @@
 }
 
 .free-shipping:hover {
-  background-color: blue;
+  background-color: #0d83a3;
 }
 
 .free-shipping-img {
@@ -92,7 +88,6 @@
   cursor: pointer;
 }
 
-
 .middle-section {
   display: flex;
   align-items: center;
@@ -124,8 +119,111 @@
   margin-right: 10px;
 }
 
-.phone-number{
-    font-family: Arial;
-    color: white;
-    font-weight: bold;
+.phone-number {
+  font-family: Arial;
+  color: white;
+  font-weight: bold;
+}
+
+/* new */
+
+.dropbtn {
+  background-color: #0e85a6;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+  height: 100%;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover .dropbtn {
+  background-color: #074253;
+}
+
+.link-container {
+  display: flex;
+  align-items: center;
+  height: 10px;
+}
+
+.link-image {
+  width: 15px;
+  padding-right: 10px;
+}
+
+.link-text {
+  font-family: Arial;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.link-button {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin-top: 10px;
+  margin-left: 15px;
+  margin-bottom: 10px;
+  background-color: #b82424;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.link-button:hover {
+  background-color: #981e1e;
+}
+
+.dropbtn {
+  height: 50px;
+  display: flex;
+  align-items: center;
+}
+
+.link-button-login,
+.link-button-register {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin-top: 10px;
+  margin-left: 15px;
+  margin-bottom: 10px;
+  background-color: #b82424;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  vertical-align: center;
 }

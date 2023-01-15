@@ -70,3 +70,27 @@
 .not-registered:hover {
   background-color: #008fb4;
 }
+
+.error-container {
+  display: flex;
+  align-items: center;
+  vertical-align: center;
+}
+
+.error-img {
+  width: 30px;
+  padding-right: 10px;
+}
+
+.error-text {
+  color: red;
+  font-family: Arial;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.error-message {
+  padding-left: 15px;
+  display: flex;
+  align-items: center;
+}

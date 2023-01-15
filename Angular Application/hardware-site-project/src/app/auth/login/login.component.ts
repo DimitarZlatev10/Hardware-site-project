@@ -9,8 +9,18 @@ import { LocalService } from 'src/app/local.service';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
+  errorMessage = '';
   email = '';
   password = '';
+
+  isEmailValid() {
+    return /^[a-zA-Z0-9]+\@[a-zA-Z]{2,}\.[a-zA-Z0-9]{2,}$/.test(this.email);
+  }
+
+  isPasswordValid() {
+    return this.password.length < 6;
+  }
+
   constructor(
     private api: ApiService,
     private router: Router,
@@ -18,7 +28,14 @@ export class LoginComponent implements OnInit {
   ) {}
 
   loginUser() {
-    console.log(this.email, this.password);
+    if (!this.isEmailValid()) {
+      return;
+    }
+
+    if (this.isPasswordValid()) {
+      return;
+    }
+
     this.api
       .login({
         email: this.email,
@@ -30,6 +47,7 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['/']);
         },
         error: (err) => {
+          this.errorMessage = err.error.message;
           console.error(err);
         },
       });

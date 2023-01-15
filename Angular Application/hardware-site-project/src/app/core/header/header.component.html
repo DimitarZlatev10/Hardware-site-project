@@ -17,8 +17,61 @@
 
 <div class="navigation-bar">
   <div class="left-section">
-    <a class="login" routerLink="/login">Login</a>
-    <a class="register" routerLink="/register">Register</a>
+    <div class="dropdown">
+      <button class="dropbtn">
+        <img src="../../../assets/icon_user.webp" />
+      </button>
+      <div class="dropdown-content">
+        <div class="dropdown-content">
+          <ng-container *ngIf="isUser">
+            <a href="#"
+              ><div class="link-container">
+                <img
+                  class="link-image"
+                  src="../../../assets/house-user-solid.svg"
+                />
+                <p class="link-text">Profile</p>
+              </div></a
+            >
+            <a href="#"
+              ><div class="link-container">
+                <img class="link-image" src="../../../assets/check-solid.svg" />
+                <p class="link-text">Orders</p>
+              </div></a
+            >
+            <a href="#"
+              ><div class="link-container">
+                <img class="link-image" src="../../../assets/heart-solid.svg" />
+                <p class="link-text">Favourites</p>
+              </div></a
+            >
+
+            <button class="link-button" (click)="logout()">
+              <div class="link-container">
+                <img
+                  class="link-image"
+                  src="../../../assets/right-from-bracket-solid.svg"
+                />
+                <p class="link-text">Logout</p>
+              </div>
+            </button>
+          </ng-container>
+
+          <ng-container *ngIf="!isUser">
+            <a routerLink="/login"
+              ><div class="link-container">
+                <p class="link-text">Login</p>
+              </div></a
+            >
+            <a routerLink="/register"
+              ><div class="link-container">
+                <p class="link-text">Register</p>
+              </div></a
+            >
+          </ng-container>
+        </div>
+      </div>
+    </div>
   </div>
   <div class="middle-section">
     <div class="periphery">Keyboards</div>

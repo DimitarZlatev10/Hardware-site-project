@@ -2,6 +2,12 @@
   <div class="container">
     <div class="login-container">
       <div class="login-text">Log in your account</div>
+      <ng-container *ngIf="errorMessage">
+        <div class="error-message">
+          <img class="error-img" src="../../../assets/close.png" />
+          <p class="error-text">{{ errorMessage }}</p>
+        </div>
+      </ng-container>
       <div class="inputs-container">
         <input
           [(ngModel)]="email"
@@ -9,14 +15,39 @@
           class="input"
           type="text"
           placeholder="Email"
+          #emailInput="ngModel"
         />
+
+        <ng-container
+          *ngIf="!isEmailValid() && (emailInput.dirty || emailInput.touched)"
+        >
+          <div class="error-container">
+            <img class="error-img" src="../../../assets/close.png" />
+            <p class="error-text">Invalid Email</p>
+          </div>
+        </ng-container>
+
         <input
           [(ngModel)]="password"
           name="password"
           class="input"
           type="text"
           placeholder="Password"
+          #passwordInput="ngModel"
         />
+
+        <ng-container
+          *ngIf="
+            isPasswordValid() && (passwordInput.dirty || passwordInput.touched)
+          "
+        >
+          <div class="error-container">
+            <img class="error-img" src="../../../assets/close.png" />
+            <p class="error-text">
+              Password must be at least 6 characters long
+            </p>
+          </div>
+        </ng-container>
       </div>
 
       <div class="buttons-container">
