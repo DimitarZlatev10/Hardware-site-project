@@ -61,6 +61,9 @@
   color: white;
   font-family: Arial;
   border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  font-size: 15px;
 }
 
 .login-button:hover,

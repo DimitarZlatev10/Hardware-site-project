@@ -61,12 +61,11 @@
   color: white;
   font-family: Arial;
   border-radius: 4px;
-}
-
-.register-button{
   border: none;
   cursor: pointer;
+  font-size: 15px;
 }
+
 .register-button:hover,
 .already-registered:hover {
   background-color: #008fb4;
