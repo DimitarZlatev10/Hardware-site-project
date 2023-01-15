@@ -15,6 +15,17 @@ const getAllUsers = async (req, res, next) => {
   return res.status(200).json(users);
 };
 
+const getUserDataByEmail = async (req, res, next) => {
+  const { email } = req.body;
+  const user = await getUserByEmail(email);
+
+  if (!user) {
+    return res.status(500).json({ message: "User not found!" });
+  }
+
+ return res.status(200).json(user);
+};
+
 const register = async (req, res, next) => {
   const { firstName, lastName, email, password } = req.body;
 
@@ -45,7 +56,33 @@ const register = async (req, res, next) => {
   return res.status(200).json(user);
 };
 
+const login = async (req, res, next) => {
+  const { email, password } = req.body;
+  const user = await getUserByEmail(email);
+
+  if (!user) {
+    return res.status(500).json({ message: "Wrong email or password" });
+  }
+
+  const hasMatch = await compare(password, user.hashedPassword);
+
+  if (!hasMatch) {
+    return res.status(500).json({ message: "Wrong email or password" });
+  }
+
+  return res.status(200).json(user);
+};
+
+async function getUserByEmail(email) {
+  const user = await User.findOne({
+    email: new RegExp(`^${email}$`, "i"),
+  });
+
+  return user;
+}
 module.exports = {
   getAllUsers,
+  getUserDataByEmail,
   register,
+  login,
 };
