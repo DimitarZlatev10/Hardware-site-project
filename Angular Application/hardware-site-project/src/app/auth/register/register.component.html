@@ -1,21 +1,51 @@
-<div class="container">
-  <form>
+<form #register="ngForm" (ngSubmit)="registerUser()">
+  <div class="container">
     <div class="register-container">
       <div class="register-text">Register new account</div>
       <div class="inputs-container">
-        <input class="input" type="text" placeholder="Name" />
-        <input class="input" type="text" placeholder="Last Name" />
-        <input class="input" type="text" placeholder="Email" />
-        <input class="input" type="text" placeholder="Password" />
-        <input class="input" type="text" placeholder="Repeat Password" />
+        <input
+          [(ngModel)]="firstName"
+          name="firstName"
+          class="input"
+          type="text"
+          placeholder="Name"
+        />
+        <input
+          [(ngModel)]="lastName"
+          name="lastName"
+          class="input"
+          type="text"
+          placeholder="Last Name"
+        />
+        <input
+          [(ngModel)]="email"
+          name="email"
+          class="input"
+          type="text"
+          placeholder="Email"
+        />
+        <input
+          [(ngModel)]="password"
+          name="password"
+          class="input"
+          type="text"
+          placeholder="Password"
+        />
+        <input
+          [(ngModel)]="repass"
+          name="repass"
+          class="input"
+          type="text"
+          placeholder="Repeat Password"
+        />
       </div>
 
       <div class="buttons-container">
-        <a class="register-button" href="#">Register</a>
+        <button class="register-button">Register</button>
         <a class="already-registered" routerLink="/login"
           >I am already registered</a
         >
       </div>
     </div>
-  </form>
-</div>
+  </div>
+</form>
