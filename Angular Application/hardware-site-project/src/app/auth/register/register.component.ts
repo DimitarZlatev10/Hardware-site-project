@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/api.service';
 import { LocalService } from 'src/app/local.service';
+import { UserService } from 'src/app/user.service';
 
 @Component({
   selector: 'app-register',
@@ -14,11 +15,13 @@ export class RegisterComponent implements OnInit {
   email = '';
   password = '';
   repass = '';
+  userInfo: any = [];
 
   constructor(
     private api: ApiService,
-    private localStorage: LocalService,
-    private router: Router
+    private localService: LocalService,
+    private router: Router,
+    private userService: UserService
   ) {}
 
   registerUser() {
@@ -32,7 +35,7 @@ export class RegisterComponent implements OnInit {
       })
       .subscribe({
         next: (value) => {
-          this.localStorage.saveData('token', this.email);
+          this.localService.saveData('token', this.email);
           this.router.navigate(['/']);
         },
         error: (err) => {
@@ -41,5 +44,14 @@ export class RegisterComponent implements OnInit {
       });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log(this.userService.isUser());
+    const email = this.localService.getData('token');
+    this.api.getUserData(email).subscribe({
+      next: (value) => {
+        this.userInfo = value;
+        console.log(this.userInfo);
+      },
+    });
+  }
 }
