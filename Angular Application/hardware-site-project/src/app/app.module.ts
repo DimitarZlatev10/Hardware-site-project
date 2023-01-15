@@ -6,6 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthModule } from './auth/auth.module';
 import { CoreModule } from './core/core.module';
+import { ProductsModule } from './products/products.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -17,6 +18,7 @@ import { CoreModule } from './core/core.module';
     AppRoutingModule,
     AuthModule,
     HttpClientModule,
+    ProductsModule,
   ],
 })
 export class AppModule {}
