@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ApiService } from 'src/app/api.service';
 
 @Component({
@@ -7,7 +8,18 @@ import { ApiService } from 'src/app/api.service';
   styleUrls: ['./products-template.component.css'],
 })
 export class ProductsTemplateComponent implements OnInit {
-  constructor(private api: ApiService) {}
+  details(id: any) {
+    this.api.getProductById(id).subscribe({
+      next: (value) => {
+        this.router.navigate(['products/details/' + id]);
+      },
+      error: (err) => {
+        console.error(err);
+      },
+    });
+  }
+
+  constructor(private api: ApiService, private router: Router) {}
 
   ngOnInit(): void {
     this.getData();

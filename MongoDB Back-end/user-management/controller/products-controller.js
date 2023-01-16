@@ -14,6 +14,20 @@ const getAllProducts = async (req, res, next) => {
   return res.status(200).json(products);
 };
 
+const getProductById = async (req, res, next) => {
+  const id = req.params.id;
+  let product;
+  try {
+    product = await Product.findById(id);
+  } catch (err) {
+    return next(err);
+  }
+  if (!product) {
+    return res.status(500).json({ message: "Unable to find product" });
+  }
+  return res.status(200).json(product);
+};
+
 const createProduct = async (req, res, next) => {
   const { title, image, description, price, type, inStock } = req.body;
   if (
@@ -53,5 +67,6 @@ const createProduct = async (req, res, next) => {
 
 module.exports = {
   getAllProducts,
+  getProductById,
   createProduct,
 };

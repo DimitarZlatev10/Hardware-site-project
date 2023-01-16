@@ -24,4 +24,8 @@ export class ApiService {
   getAllProducts() {
     return this.http.get(`${apiUrl}/products`);
   }
+
+  getProductById(id: any) {
+    return this.http.get(`${apiUrl}/products/` + id);
+  }
 }

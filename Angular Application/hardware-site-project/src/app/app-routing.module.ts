@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { HomeComponent } from './core/home/home.component';
+import { DetailsComponent } from './products/details/details.component';
 import { ProductsTemplateComponent } from './products/products-template/products-template.component';
 
 const routes: Routes = [
@@ -44,10 +45,10 @@ const routes: Routes = [
         },
       },
       {
-        path: 'Chair',
+        path: 'Chairs',
         component: ProductsTemplateComponent,
         data: {
-          periphery: ['chair'],
+          periphery: ['chairs'],
         },
       },
       {
@@ -63,6 +64,10 @@ const routes: Routes = [
         data: {
           periphery: ['laptops'],
         },
+      },
+      {
+        path: 'details/:id',
+        component: DetailsComponent,
       },
     ],
   },

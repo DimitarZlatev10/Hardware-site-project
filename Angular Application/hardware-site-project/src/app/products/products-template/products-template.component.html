@@ -2,7 +2,7 @@
   <div *ngFor="let d of data | paginate : { itemsPerPage: 10, currentPage: p }">
     <div class="new-item-row">
       <div class="new-image">
-        <img class="item-image" src="{{d.image}}" />
+        <img class="item-image" src="{{ d.image }}" (click)="details(d._id)" />
       </div>
       <div class="item-title">{{ d.title }}</div>
       <div class="item-details-container">
@@ -12,7 +12,7 @@
         <div class="item-RGB"><span class="item-span">RGB</span>: Yes</div>
       </div>
       <div class="item-price-container">
-        <div class="item-price">{{d.price.toFixed(2)}}$</div>
+        <div class="item-price">{{ d.price.toFixed(2) }}$</div>
         <div class="item-buttons">
           <img class="btn-img" src="../../../assets/icon_product_cart.webp" />
           <img
