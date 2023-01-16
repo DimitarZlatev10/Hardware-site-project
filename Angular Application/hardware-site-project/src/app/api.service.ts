@@ -42,4 +42,18 @@ export class ApiService {
       userId,
     });
   }
+
+  addProductToCart(productId: string, userId: string) {
+    return this.http.post(`${apiUrl}/products/addToCart`, {
+      productId,
+      userId,
+    });
+  }
+
+  removeProductFromCart(productId: string, userId: string) {
+    return this.http.post(`${apiUrl}/products/removeFromCart`, {
+      productId,
+      userId,
+    });
+  }
 }

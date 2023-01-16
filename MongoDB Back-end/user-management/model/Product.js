@@ -29,13 +29,11 @@ const productSchema = new Schema({
     type: Number,
     required: true,
   },
-  favourites: [
-    {
-      type: ObjectId,
-      ref: "User",
-      default: [],
-    },
-  ],
+  favourites: {
+    type: [ObjectId],
+    ref: "User",
+    default: [],
+  },
   cart: {
     type: [ObjectId],
     ref: "User",

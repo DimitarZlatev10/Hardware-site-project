@@ -111,8 +111,8 @@ const removeFromFavourites = async (req, res, next) => {
     });
   }
 
-  const userIndex = product.favourites.indexOf(productId);
-  const productIndex = user.favourites.indexOf(userId);
+  const userIndex = product.favourites.indexOf(userId);
+  const productIndex = user.favourites.indexOf(productId);
 
   product.favourites.splice(userIndex, 1);
   user.favourites.splice(productIndex, 1);
@@ -125,10 +125,70 @@ const removeFromFavourites = async (req, res, next) => {
   });
 };
 
+const addToCart = async (req, res, next) => {
+  const { productId, userId } = req.body;
+  const product = await Product.findById(productId);
+  const user = await User.findById(userId);
+
+  if (product.cart.includes(userId)) {
+    return res
+      .status(500)
+      .json({ message: "You have already added this product to your cart" });
+  }
+
+  if (user.cart.includes(productId)) {
+    return res
+      .status(500)
+      .json({ message: "This product is already in your cart" });
+  }
+
+  product.cart.push(userId);
+  await product.save();
+  user.cart.push(productId);
+  await user.save();
+
+  return res
+    .status(200)
+    .json({ message: "Successfully added this product to your cart" });
+};
+
+const removeFromCart = async (req, res, next) => {
+  const { productId, userId } = req.body;
+  const product = await Product.findById(productId);
+  const user = await User.findById(userId);
+
+  if (!product.cart.includes(userId)) {
+    return res
+      .status(500)
+      .json({ message: "This product is not in your cart" });
+  }
+
+  if (!user.cart.includes(productId)) {
+    return res
+      .status(500)
+      .json({ message: "You havent added this product in your cart" });
+  }
+
+  const userIndex = product.cart.indexOf(userId);
+  const productIndex = user.cart.indexOf(productId);
+
+  product.cart.splice(userIndex, 1);
+  user.cart.splice(productIndex, 1);
+
+  await product.save();
+  await user.save();
+
+  return res.status(200).json({
+    message: "You have successfully removed this item from your cart",
+  });
+};
+
 module.exports = {
   getAllProducts,
   getProductById,
   createProduct,
   addToFavourites,
   removeFromFavourites,
+  addToCart,
+  removeFromCart,
 };

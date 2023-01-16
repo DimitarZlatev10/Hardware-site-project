@@ -56,6 +56,43 @@ export class ProductsTemplateComponent implements OnInit {
     });
   }
 
+  addToCart(id: string) {
+    if (this.userInfo.length == 0) {
+      this.router.navigate(['/login']);
+      alert('You must be logged in to add products to your cart');
+      return;
+    }
+
+    this.api.addProductToCart(id, this.userInfo._id).subscribe({
+      next: (value) => {
+        console.log(value);
+
+        this.getData();
+      },
+      error: (err) => {
+        console.error(err);
+      },
+    });
+  }
+
+  removeFromCart(id: string) {
+    if (this.userInfo.length == 0) {
+      this.router.navigate(['/login']);
+      alert('You must be logged in to remove items from your cart');
+    }
+
+    this.api.removeProductFromCart(id, this.userInfo._id).subscribe({
+      next: (value) => {
+        console.log(value);
+
+        this.getData();
+      },
+      error: (err) => {
+        console.error(err);
+      },
+    });
+  }
+
   constructor(
     private api: ApiService,
     private router: Router,
