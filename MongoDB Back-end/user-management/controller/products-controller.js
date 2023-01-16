@@ -1,4 +1,5 @@
 const Product = require("../model/Product");
+const User = require("../model/User");
 
 const getAllProducts = async (req, res, next) => {
   let products;
@@ -65,8 +66,69 @@ const createProduct = async (req, res, next) => {
   return res.status(201).json(product);
 };
 
+const addToFavourites = async (req, res, next) => {
+  const { productId, userId } = req.body;
+  const product = await Product.findById(productId);
+  const user = await User.findById(userId);
+
+  if (product.favourites.includes(userId)) {
+    return res.status(500).json({
+      message: "You have already added this product to your favourites",
+    });
+  }
+
+  if (user.favourites.includes(productId)) {
+    return res
+      .status(500)
+      .json({ message: "This product is already in your favourites" });
+  }
+
+  product.favourites.push(userId);
+  await product.save();
+
+  user.favourites.push(productId);
+  await user.save();
+
+  return res
+    .status(200)
+    .json({ message: "Item is successfully added to your favourites" });
+};
+
+const removeFromFavourites = async (req, res, next) => {
+  const { productId, userId } = req.body;
+  const product = await Product.findById(productId);
+  const user = await User.findById(userId);
+
+  if (!product.favourites.includes(userId)) {
+    return res.status(500).json({
+      message: "You havent added this product to your favourites",
+    });
+  }
+
+  if (!user.favourites.includes(productId)) {
+    return res.status(500).json({
+      message: "This item is not in your favourites",
+    });
+  }
+
+  const userIndex = product.favourites.indexOf(productId);
+  const productIndex = user.favourites.indexOf(userId);
+
+  product.favourites.splice(userIndex, 1);
+  user.favourites.splice(productIndex, 1);
+
+  await product.save();
+  await user.save();
+
+  return res.status(200).json({
+    message: "Product has been successfully removed from your favourites",
+  });
+};
+
 module.exports = {
   getAllProducts,
   getProductById,
   createProduct,
+  addToFavourites,
+  removeFromFavourites,
 };

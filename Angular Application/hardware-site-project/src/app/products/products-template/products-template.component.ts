@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/api.service';
+import { LocalService } from 'src/app/local.service';
 
 @Component({
   selector: 'app-products-template',
@@ -8,6 +9,8 @@ import { ApiService } from 'src/app/api.service';
   styleUrls: ['./products-template.component.css'],
 })
 export class ProductsTemplateComponent implements OnInit {
+  userInfo: any = [];
+
   details(id: any) {
     this.api.getProductById(id).subscribe({
       next: (value) => {
@@ -19,10 +22,49 @@ export class ProductsTemplateComponent implements OnInit {
     });
   }
 
-  constructor(private api: ApiService, private router: Router) {}
+  addToFavourites(id: string) {
+    if (this.userInfo.length == 0) {
+      this.router.navigate(['/login']);
+      alert('You must be logged in to add products to your favourites');
+      return;
+    }
+
+    this.api.addProductToFavourites(id, this.userInfo._id).subscribe({
+      next: (value) => {
+        this.getData();
+      },
+      error: (err) => {
+        console.error(err);
+      },
+    });
+  }
+
+  removeFromFavourites(id: string) {
+    if (this.userInfo.length == 0) {
+      this.router.navigate(['/login']);
+      alert('You must be logged in to remove products from your favourites');
+      return;
+    }
+
+    this.api.removeProductFromFavourites(id, this.userInfo._id).subscribe({
+      next: (value) => {
+        this.getData();
+      },
+      error: (err) => {
+        console.error(err);
+      },
+    });
+  }
+
+  constructor(
+    private api: ApiService,
+    private router: Router,
+    private localService: LocalService
+  ) {}
 
   ngOnInit(): void {
     this.getData();
+    this.getUserInfo();
   }
 
   p: any;
@@ -31,6 +73,19 @@ export class ProductsTemplateComponent implements OnInit {
     this.api.getAllProducts().subscribe((data) => {
       this.data = data;
       console.log(this.data);
+    });
+  }
+
+  getUserInfo() {
+    const email = this.localService.getData('token');
+    this.api.getUserData(email).subscribe({
+      next: (value) => {
+        this.userInfo = value;
+        console.log(this.userInfo);
+      },
+      error: (err) => {
+        console.error(err);
+      },
     });
   }
 }

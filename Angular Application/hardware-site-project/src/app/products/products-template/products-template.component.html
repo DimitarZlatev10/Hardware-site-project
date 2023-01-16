@@ -14,11 +14,34 @@
       <div class="item-price-container">
         <div class="item-price">{{ d.price.toFixed(2) }}$</div>
         <div class="item-buttons">
-          <img class="btn-img" src="../../../assets/icon_product_cart.webp" />
-          <img
-            class="btn-img"
-            src="../../../assets/icon_product_wishlist_bell.webp"
-          />
+          <ng-container *ngIf="d.cart.includes(userInfo._id)">
+            <img
+              class="btn-img-added"
+              src="../../../assets/icon_product_cart.webp"
+            />
+          </ng-container>
+
+          <ng-container *ngIf="!d.cart.includes(userInfo._id)">
+            <img
+              class="btn-img-not-added"
+              src="../../../assets/icon_product_cart.webp"
+            />
+          </ng-container>
+
+          <ng-container *ngIf="d.favourites.includes(userInfo._id)">
+            <img
+              class="btn-img-favourited"
+              src="../../../assets/icon_product_wishlist_bell.webp"
+              (click)="removeFromFavourites(d._id)"
+            />
+          </ng-container>
+          <ng-container *ngIf="!d.favourites.includes(userInfo._id)">
+            <img
+              class="btn-img-not-favourited"
+              src="../../../assets/icon_product_wishlist_bell.webp"
+              (click)="addToFavourites(d._id)"
+            />
+          </ng-container>
         </div>
       </div>
     </div>

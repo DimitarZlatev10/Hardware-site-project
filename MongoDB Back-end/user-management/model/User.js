@@ -27,6 +27,11 @@ const userSchema = new Schema({
     ref: "Products",
     default: [],
   },
+  cart: {
+    type: [ObjectId],
+    ref: "Products",
+    default: [],
+  },
 });
 
 userSchema.index(

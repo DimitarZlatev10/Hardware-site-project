@@ -28,4 +28,18 @@ export class ApiService {
   getProductById(id: any) {
     return this.http.get(`${apiUrl}/products/` + id);
   }
+
+  addProductToFavourites(productId: string, userId: string) {
+    return this.http.post(`${apiUrl}/products/addToFavourites`, {
+      productId,
+      userId,
+    });
+  }
+
+  removeProductFromFavourites(productId: string, userId: string) {
+    return this.http.post(`${apiUrl}/products/removeFromFavourites`, {
+      productId,
+      userId,
+    });
+  }
 }

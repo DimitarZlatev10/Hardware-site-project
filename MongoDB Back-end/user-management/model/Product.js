@@ -36,6 +36,11 @@ const productSchema = new Schema({
       default: [],
     },
   ],
+  cart: {
+    type: [ObjectId],
+    ref: "User",
+    default: [],
+  },
 });
 
 const Product = model("Product", productSchema);
