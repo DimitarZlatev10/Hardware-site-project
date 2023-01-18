@@ -1,3 +1,15 @@
+<ng-container *ngIf="message">
+  <div class="success-message-container">
+    {{ message }}
+  </div>
+</ng-container>
+
+<ng-container *ngIf="data.length == 0">
+  <div class="empty-data-container">
+    You have no products added to your favourites
+  </div>
+</ng-container>
+
 <div class="new-items-container">
   <div *ngFor="let d of data | paginate : { itemsPerPage: 10, currentPage: p }">
     <div class="new-item-row">

@@ -10,6 +10,7 @@ import { LocalService } from 'src/app/local.service';
 })
 export class FavouritesComponent implements OnInit {
   userInfo: any = [];
+  message: string | null = null;
 
   details(id: any) {
     this.api.getProductById(id).subscribe({
@@ -31,6 +32,7 @@ export class FavouritesComponent implements OnInit {
 
     this.api.addProductToFavourites(id, this.userInfo._id).subscribe({
       next: (value) => {
+        this.message = 'Successfully added item to your favourites';
         this.getUserFavourites();
       },
       error: (err) => {
@@ -48,6 +50,7 @@ export class FavouritesComponent implements OnInit {
 
     this.api.removeProductFromFavourites(id, this.userInfo._id).subscribe({
       next: (value) => {
+        this.message = 'Successfully removed item from your favourites';
         this.getUserFavourites();
       },
       error: (err) => {
@@ -65,8 +68,7 @@ export class FavouritesComponent implements OnInit {
 
     this.api.addProductToCart(id, this.userInfo._id).subscribe({
       next: (value) => {
-        console.log(value);
-
+        this.message = 'Successfully added item to your cart';
         this.getUserFavourites();
       },
       error: (err) => {
@@ -83,7 +85,7 @@ export class FavouritesComponent implements OnInit {
 
     this.api.removeProductFromCart(id, this.userInfo._id).subscribe({
       next: (value) => {
-        console.log(value);
+        this.message = 'Successfully removed item from your cart';
 
         this.getUserFavourites();
       },

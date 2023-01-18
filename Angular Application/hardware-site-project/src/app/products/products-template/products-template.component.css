@@ -1,3 +1,18 @@
+.success-message-container {
+  text-align: center;
+  background-color: rgb(10, 241, 10);
+  font-size: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.empty-data-container {
+  text-align: center;
+  padding-top: 40px;
+  padding-bottom: 10px;
+  font-size: 30px;
+}
+
 .new-items-text {
   display: inline-block;
   align-items: center;
@@ -103,7 +118,6 @@
 .btn-img-favourited:hover {
   background-color: red;
 }
-
 
 .view-all-items-container {
   margin-top: 20px;
