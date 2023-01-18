@@ -1,0 +1,53 @@
+<div class="new-items-container">
+  <div *ngFor="let d of data | paginate : { itemsPerPage: 10, currentPage: p }">
+    <div class="new-item-row">
+      <div class="new-image">
+        <img class="item-image" src="{{ d.image }}" (click)="details(d._id)" />
+      </div>
+      <div class="item-title">{{ d.title }}</div>
+      <div class="item-details-container">
+        <div class="item-type">
+          <span class="item-span">Type</span>: {{ d.type }}
+        </div>
+        <div class="item-RGB"><span class="item-span">RGB</span>: Yes</div>
+      </div>
+      <div class="item-price-container">
+        <div class="item-price">{{ d.price.toFixed(2) }}$</div>
+        <div class="item-buttons">
+          <ng-container *ngIf="d.cart.includes(userInfo._id)">
+            <img
+              class="btn-img-added"
+              src="../../../assets/icon_product_cart.webp"
+              (click)="removeFromCart(d._id)"
+            />
+          </ng-container>
+
+          <ng-container *ngIf="!d.cart.includes(userInfo._id)">
+            <img
+              class="btn-img-not-added"
+              src="../../../assets/icon_product_cart.webp"
+              (click)="addToCart(d._id)"
+            />
+          </ng-container>
+
+          <ng-container *ngIf="d.favourites.includes(userInfo._id)">
+            <img
+              class="btn-img-favourited"
+              src="../../../assets/icon_product_wishlist_bell.webp"
+              (click)="removeFromFavourites(d._id)"
+            />
+          </ng-container>
+          <ng-container *ngIf="!d.favourites.includes(userInfo._id)">
+            <img
+              class="btn-img-not-favourited"
+              src="../../../assets/icon_product_wishlist_bell.webp"
+              (click)="addToFavourites(d._id)"
+            />
+          </ng-container>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<pagination-controls (pageChange)="p = $event" class="float-right">
+</pagination-controls>

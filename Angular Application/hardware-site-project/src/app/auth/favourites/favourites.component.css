@@ -104,7 +104,6 @@
   background-color: red;
 }
 
-
 .view-all-items-container {
   margin-top: 20px;
   margin-bottom: 40px;
@@ -131,12 +130,3 @@
   background-color: #09aca2;
   color: white;
 }
-
-/* .float-right ::ng-deep .ngx-pagination .pagination-previous {
-  background: red;
-  cursor: pointer;
-}
-
-.float-right ::ng-deep .ngx-pagination .pagination-previous:hover {
-  background: blue;
-} */

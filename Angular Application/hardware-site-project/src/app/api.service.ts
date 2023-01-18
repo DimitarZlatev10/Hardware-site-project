@@ -13,6 +13,10 @@ export class ApiService {
     return this.http.post(`${apiUrl}/users/userData`, { email });
   }
 
+  getUserFavouriteProducts(email: any) {
+    return this.http.post(`${apiUrl}/users/getUserFavourites`, { email });
+  }
+
   register(userData: any) {
     return this.http.post(`${apiUrl}/users/register`, userData);
   }

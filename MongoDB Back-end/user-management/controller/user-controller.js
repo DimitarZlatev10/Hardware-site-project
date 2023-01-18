@@ -1,5 +1,6 @@
 const User = require("../model/User");
 const { hash, compare } = require("bcrypt");
+const Product = require("../model/Product");
 
 const getAllUsers = async (req, res, next) => {
   let users;
@@ -25,6 +26,30 @@ const getUserDataByEmail = async (req, res, next) => {
   }
 
   return res.status(200).json(user);
+};
+
+const getUserFavourites = async (req, res, next) => {
+  const { email } = req.body;
+  const user = await getUserByEmail(email);
+
+  if (!user) {
+    return res.status(500).json({ message: "This user doesnt exist " });
+  }
+
+  if (user.favourites.length == 0) {
+    return res.status(200).json(user.favourites);
+  }
+
+  const favourites = [];
+  for (const id of user.favourites) {
+    const product = await Product.findById(id);
+    if (!product || product.length == 0) {
+      return res.status(500).json({ message: "Product not found" });
+    }
+    favourites.push(product);
+  }
+
+  return res.status(200).json(favourites);
 };
 
 const register = async (req, res, next) => {
@@ -84,6 +109,7 @@ async function getUserByEmail(email) {
 module.exports = {
   getAllUsers,
   getUserDataByEmail,
+  getUserFavourites,
   register,
   login,
 };
