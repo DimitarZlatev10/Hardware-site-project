@@ -4,6 +4,8 @@ import { FavouritesComponent } from './auth/favourites/favourites.component';
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { HomeComponent } from './core/home/home.component';
+import { guestGuard } from './guards/guest.guard';
+import { userGuard } from './guards/user.guard';
 import { DetailsComponent } from './products/details/details.component';
 import { ProductsTemplateComponent } from './products/products-template/products-template.component';
 
@@ -16,15 +18,18 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
+    canActivate: [guestGuard],
   },
   {
     path: 'register',
     component: RegisterComponent,
+    canActivate: [guestGuard],
   },
 
   {
     path: 'favourites',
     component: FavouritesComponent,
+    canActivate: [userGuard],
   },
   {
     path: 'products',
