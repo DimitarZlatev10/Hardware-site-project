@@ -50,6 +50,25 @@
   padding-right: 150px;
 }
 
+.shopping-cart-container {
+  position: relative;
+}
+
+.shopping-cart-count {
+  position: absolute;
+  top: 0;
+  right: -5px;
+  background-color: red;
+  color: white;
+  font-family: Arial;
+  font-size: 12px;
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-radius: 10px;
+}
+
 .shopping-cart-img {
   width: 50px;
   height: 50px;
@@ -228,6 +247,6 @@
   vertical-align: center;
 }
 
-.products-router{
+.products-router {
   text-decoration: none;
 }
