@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/api.service';
 import { LocalService } from 'src/app/local.service';
 
@@ -11,6 +11,7 @@ import { LocalService } from 'src/app/local.service';
 export class ProductsTemplateComponent implements OnInit {
   userInfo: any = [];
   message: string | null = null;
+  peripheryType: string | null = '';
 
   details(id: any) {
     this.api.getProductById(id).subscribe({
@@ -97,7 +98,8 @@ export class ProductsTemplateComponent implements OnInit {
   constructor(
     private api: ApiService,
     private router: Router,
-    private localService: LocalService
+    private localService: LocalService,
+    private activatedRouter: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
@@ -107,10 +109,20 @@ export class ProductsTemplateComponent implements OnInit {
 
   p: any;
   data: any = [];
+
   getData() {
-    this.api.getAllProducts().subscribe((data) => {
-      this.data = data;
-      console.log(this.data);
+    this.peripheryType = this.activatedRouter.snapshot.data['periphery'];
+
+    this.api.getAllProducts().subscribe({
+      next: (value: any) => {
+        let items = [];
+        for (const item of value) {
+          if (item.type == this.peripheryType) {
+            items.push(item);
+          }
+        }
+        this.data = items;
+      },
     });
   }
 

@@ -56,10 +56,10 @@ const routes: Routes = [
         },
       },
       {
-        path: 'Chairs',
+        path: 'Headsets',
         component: ProductsTemplateComponent,
         data: {
-          periphery: ['chairs'],
+          periphery: ['headsets'],
         },
       },
       {
